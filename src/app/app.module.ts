@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
   MaterialModule,
+  HeaderComponent,
 } from './ui';
 
 @NgModule({
@@ -21,6 +22,8 @@ import {
   ],
   declarations: [
     AppComponent,
+    // UI Components
+    HeaderComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
