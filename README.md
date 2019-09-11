@@ -1,2 +1,3 @@
-# angular-apollo-graphql-demo
-Example of consuming GraphQL API using Apollo with Angular
+# Angular Apollo GraphQL Demo
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
