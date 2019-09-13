@@ -10,6 +10,9 @@ import {
   MaterialModule,
   HeaderComponent,
 } from './ui';
+import {
+  UsersComponent,
+} from './components';
 
 @NgModule({
   imports: [
@@ -24,6 +27,8 @@ import {
     AppComponent,
     // UI Components
     HeaderComponent,
+    // Feature Components
+    UsersComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
