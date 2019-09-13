@@ -12,6 +12,7 @@ import {
 } from './ui';
 import {
   UsersComponent,
+  PostsComponent,
 } from './components';
 
 @NgModule({
@@ -29,6 +30,7 @@ import {
     HeaderComponent,
     // Feature Components
     UsersComponent,
+    PostsComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
