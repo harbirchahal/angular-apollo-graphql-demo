@@ -13,6 +13,7 @@ import {
 import {
   UsersComponent,
   PostsComponent,
+  CommentsComponent,
 } from './components';
 
 @NgModule({
@@ -31,6 +32,10 @@ import {
     // Feature Components
     UsersComponent,
     PostsComponent,
+    CommentsComponent,
+  ],
+  entryComponents: [
+    CommentsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

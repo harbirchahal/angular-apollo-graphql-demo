@@ -1,0 +1,13 @@
+.mat-dialog-title {
+  margin-bottom: 5px;
+}
+
+.mat-dialog-content {
+  min-height: 325px;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Post } from '@app/graphql-types';
+import { CommentsComponent } from '../comments/comments.component';
 
 const query = gql`
   query AllPosts {
@@ -36,12 +38,20 @@ export class PostsComponent implements OnInit {
     })
     .valueChanges;
 
-  constructor(private readonly apollo: Apollo) { }
+  constructor(
+    private readonly apollo: Apollo,
+    private readonly dialog: MatDialog,
+  ) { }
 
   ngOnInit() {
   }
 
-  showComments(post) {
+  showComments(post: Post) {
+    this.dialog.open(CommentsComponent, {
+      height: '500px',
+      width: '700px',
+      data: post.id
+    });
   }
 
 }
