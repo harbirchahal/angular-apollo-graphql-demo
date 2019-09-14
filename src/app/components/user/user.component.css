@@ -1,0 +1,11 @@
+.mat-card-title {
+  font-size: 1rem;
+}
+
+.mat-list-item {
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.comments {
+  color: #495057;
+}
