@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
+import { ApolloError } from 'apollo-client';
 import gql from 'graphql-tag';
-import { map, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map, switchMap, catchError } from 'rxjs/operators';
 import { User } from '@app/graphql-types';
 
 const fragment = gql`
@@ -68,7 +70,9 @@ export class UserComponent implements OnInit {
       .watchQuery<Response, Variables>({
         query, returnPartialData: true, variables: { userId: id }
       })
-      .valueChanges
+      .valueChanges.pipe(
+        catchError((err: ApolloError) => of(err))
+      )
     ));
 
   constructor(

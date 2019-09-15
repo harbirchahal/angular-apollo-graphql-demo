@@ -1,7 +1,7 @@
 <ng-container *ngIf="query$ | async as result">
   <ui-header [title]="name$ | async" [loading]="result.loading"></ui-header>
-  <ng-container *ngIf="result.data?.user as user">
-    <mat-card>
+  <ng-container *ngIf="result.data; else showError">
+    <mat-card *ngIf="result.data.user as user">
       <mat-card-title>
         <span>{{ user.email }}</span>
         <span class="lr-space">|</span>
@@ -23,6 +23,9 @@
       </mat-card-content>
     </mat-card>
   </ng-container>
+  <ng-template #showError>
+    <ui-error [apolloError]="result"></ui-error>
+  </ng-template>
 </ng-container>
 
 <ng-template #address let-address="address">

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import {
   MaterialModule,
   HeaderComponent,
+  ErrorComponent,
 } from './ui';
 import {
   UsersComponent,
@@ -30,6 +31,7 @@ import {
     AppComponent,
     // UI Components
     HeaderComponent,
+    ErrorComponent,
     // Feature Components
     UsersComponent,
     UserComponent,
