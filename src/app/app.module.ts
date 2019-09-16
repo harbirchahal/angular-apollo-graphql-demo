@@ -12,6 +12,7 @@ import {
   ErrorComponent,
 } from './ui';
 import {
+  HomeComponent,
   UsersComponent,
   UserComponent,
   PostsComponent,
@@ -33,6 +34,7 @@ import {
     HeaderComponent,
     ErrorComponent,
     // Feature Components
+    HomeComponent,
     UsersComponent,
     UserComponent,
     PostsComponent,

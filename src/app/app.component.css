@@ -8,3 +8,11 @@ footer > p {
   margin-top: 10px;
   color: grey;
 }
+
+.mat-drawer-container {
+  background-color: white;
+}
+
+.mat-sidenav-content {
+  height: calc(100vh - 146px);
+}
