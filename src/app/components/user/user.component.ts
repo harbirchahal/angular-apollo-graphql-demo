@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import { ApolloError } from 'apollo-client';
+import { ApolloError, ApolloQueryResult } from 'apollo-client';
 import gql from 'graphql-tag';
-import { of } from 'rxjs';
+import { Observable, of, combineLatest } from 'rxjs';
 import { map, switchMap, catchError } from 'rxjs/operators';
 import { User } from '@app/graphql-types';
 
@@ -54,31 +54,45 @@ type Variables = {
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  readonly name$ = this.route.paramMap.pipe(
-    map(params => params.get('id')),
-    map(id => this.apollo.getClient()
-      .readFragment<User>({
-        id: 'User:' + id, fragment
-      })
-    ),
-    map((user: User) => user && user.name || 'User')
-  );
-
-  readonly query$ = this.route.paramMap.pipe(
-    map(params => +params.get('id')),
-    switchMap(id => this.apollo
-      .watchQuery<Response, Variables>({
-        query, returnPartialData: true, variables: { userId: id }
-      })
-      .valueChanges.pipe(
-        catchError((err: ApolloError) => of(err))
-      )
-    ));
+  readonly name$!: Observable<string>;
+  readonly query$!: Observable<ApolloQueryResult<Response> | ApolloError>;
 
   constructor(
     private readonly apollo: Apollo,
     private readonly route: ActivatedRoute,
-  ) { }
+  ) {
+    const paramMap$ = this.route.paramMap.pipe(
+      map(params => +params.get('id')),
+    );
+
+    this.query$ = paramMap$.pipe(
+      switchMap(id => this.apollo
+        .watchQuery<Response, Variables>({
+          query, returnPartialData: true, variables: { userId: id }
+        })
+        .valueChanges.pipe(
+          catchError((err: ApolloError) => of(err))
+        )),
+    );
+
+    const cacheUser$ = paramMap$.pipe(
+      map(id => this.apollo.getClient()
+        .readFragment<User>({
+          id: 'User:' + id, fragment
+        })
+      ),
+    );
+
+    const queryUser$ = this.query$.pipe(
+      map((result: ApolloQueryResult<Response>) =>
+        result.data && result.data.user),
+    );
+
+    this.name$ = combineLatest(cacheUser$, queryUser$).pipe(
+      map(([cacheUser, queryUser]) => queryUser || cacheUser),
+      map(user => user && user.name || 'User'),
+    );
+  }
 
   ngOnInit() {
   }
