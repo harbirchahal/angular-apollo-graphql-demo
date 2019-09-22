@@ -15,12 +15,24 @@ const mutation = gql`
   }
 `;
 
+const query = gql`
+  query AllPosts {
+    posts {
+      id
+    }
+  }
+`;
+
 type Response = {
   deletePost: Post;
 };
 
 type Variables = {
   postId: number;
+};
+
+type Data = {
+  posts: Post[]
 };
 
 @Component({
@@ -46,16 +58,21 @@ export class DeletePostComponent implements OnInit {
       width: '300px',
       data: 'Are you sure to delete this post?'
     })
-    .afterClosed().pipe(
-      filter(yes => yes),
-      switchMap(() => this.apollo.mutate<Response, Variables>({
-        mutation, variables: { postId: this.post.id }
-      })),
-    )
-    .subscribe((result) => {            
-    }, (error: ApolloError) => {
-      console.error(`[DeletePostComponent] ID: ${this.post.id}`, error);
-    });
+      .afterClosed().pipe(
+        filter(result => !!result),
+        switchMap(() => this.apollo.mutate<Response, Variables>({
+          mutation, variables: { postId: this.post.id },
+          update: (store, { data: { deletePost } }) => {
+            const data = store.readQuery<Data>({ query });
+            data.posts = data.posts.filter(p => p.id !== deletePost.id);
+            store.writeQuery<Data>({ query, data });
+          }
+        })),
+      )
+      .subscribe((result) => {
+      }, (error: ApolloError) => {
+        console.error(`[DeletePostComponent] ID: ${this.post.id}`, error);
+      });
   }
 
 }
