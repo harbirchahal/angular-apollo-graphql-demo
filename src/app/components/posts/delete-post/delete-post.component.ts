@@ -37,9 +37,8 @@ type Data = {
 
 @Component({
   selector: 'delete-post',
-  template: `
-    <a mat-button (click)="confim()">Delete</a>
-  `,
+  templateUrl: './delete-post.component.html',
+  styleUrls: ['./delete-post.component.css']
 })
 export class DeletePostComponent implements OnInit {
   @Input() post: Post;
