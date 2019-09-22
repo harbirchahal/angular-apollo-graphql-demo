@@ -10,12 +10,14 @@ import {
   MaterialModule,
   HeaderComponent,
   ErrorComponent,
+  ConfirmComponent,
 } from './ui';
 import {
   HomeComponent,
   UsersComponent,
   UserComponent,
   PostsComponent,
+  DeletePostComponent,
   CommentsComponent,
 } from './components';
 
@@ -33,15 +35,18 @@ import {
     // UI Components
     HeaderComponent,
     ErrorComponent,
+    ConfirmComponent,
     // Feature Components
     HomeComponent,
     UsersComponent,
     UserComponent,
     PostsComponent,
+    DeletePostComponent,
     CommentsComponent,
   ],
   entryComponents: [
-    CommentsComponent
+    CommentsComponent,
+    ConfirmComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

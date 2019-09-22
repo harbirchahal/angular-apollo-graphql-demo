@@ -48,7 +48,7 @@ export class PostsComponent implements OnInit {
 
   showComments(post: Post) {
     this.dialog.open(CommentsComponent, {
-      height: '500px',
+      height: 'auto',
       width: '700px',
       data: post.id
     });

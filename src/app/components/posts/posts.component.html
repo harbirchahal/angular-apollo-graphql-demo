@@ -14,6 +14,11 @@
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>{{ post.body }}</mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <a mat-button>Edit</a>
+        <delete-post [post]="post"></delete-post>
+      </mat-card-actions>
     </mat-card>
   </div>
 </ng-container>

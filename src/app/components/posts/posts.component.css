@@ -1,0 +1,15 @@
+.mat-divider {
+  display: none;
+}
+
+.mat-card-actions {
+  display: none;
+}
+
+.mat-card:hover .mat-divider {
+  display: block;
+}
+
+.mat-card:hover .mat-card-actions {
+  display: block;
+}

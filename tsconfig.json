@@ -23,6 +23,9 @@
       "@app/graphql-types": [
         "src/app/graphql/types/index.ts"
       ],
+      "@app/ui-components": [
+        "src/app/ui/index.ts"
+      ],
     },
   },
   "angularCompilerOptions": {
