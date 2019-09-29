@@ -52,6 +52,7 @@ import {
   entryComponents: [
     CommentsComponent,
     ConfirmComponent,
+    UpdatePostComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

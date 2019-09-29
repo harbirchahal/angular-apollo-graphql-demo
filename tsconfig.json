@@ -26,6 +26,9 @@
       "@app/ui-components": [
         "src/app/ui/index.ts"
       ],
+      "@app/util/operators": [
+        "src/app/util/operators/index.ts"
+      ],
     },
   },
   "angularCompilerOptions": {

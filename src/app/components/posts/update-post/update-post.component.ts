@@ -72,7 +72,6 @@ export class UpdatePostComponent implements OnInit {
       return;
     }
     const data = { userId: +this.post.author.id, ...this.postForm.value };
-    console.log(data);
     this.apollo.mutate<Response, Variables>({
       mutation, variables: { postId: this.post.id, data }
     })

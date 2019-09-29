@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Post } from '@app/graphql-types';
-import { CommentsComponent } from '../comments/comments.component';
+import { CommentsComponent } from './comments/comments.component';
 import { UpdatePostComponent } from './update-post/update-post.component';
 
 const query = gql`

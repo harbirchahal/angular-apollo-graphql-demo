@@ -15,15 +15,6 @@ body {
   margin: 0 10px;
 }
 
-a.action {
-  color: #007bff !important;
-}
-
-a.action:hover {
-  text-decoration: underline !important;
-  cursor: pointer !important;
-}
-
 .mat-card {
   margin: 5px;
 }

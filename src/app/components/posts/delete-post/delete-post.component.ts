@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
-import { ConfirmComponent } from '@app/ui-components';
-import { filter, switchMap } from 'rxjs/operators';
-import { Post } from '@app/graphql-types';
 import { ApolloError } from 'apollo-client';
+import gql from 'graphql-tag';
+import { switchMap } from 'rxjs/operators';
+import { ConfirmComponent } from '@app/ui-components';
+import { hasConfirmation } from '@app/util/operators';
+import { Post } from '@app/graphql-types';
 
 const mutation = gql`
   mutation DeletePost($postId: ID!) {
@@ -58,7 +59,7 @@ export class DeletePostComponent implements OnInit {
       data: 'Are you sure to delete this post?'
     })
       .afterClosed().pipe(
-        filter(result => !!result),
+        hasConfirmation,
         switchMap(() => this.apollo.mutate<Response, Variables>({
           mutation, variables: { postId: this.post.id },
           update: (store, { data: { deletePost } }) => {
