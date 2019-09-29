@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GraphQLModule } from './graphql';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,7 @@ import {
   UsersComponent,
   UserComponent,
   PostsComponent,
+  UpdatePostComponent,
   DeletePostComponent,
   CommentsComponent,
 } from './components';
@@ -26,6 +28,8 @@ import {
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     GraphQLModule,
     MaterialModule,
     AppRoutingModule,
@@ -43,6 +47,7 @@ import {
     PostsComponent,
     DeletePostComponent,
     CommentsComponent,
+    UpdatePostComponent,
   ],
   entryComponents: [
     CommentsComponent,

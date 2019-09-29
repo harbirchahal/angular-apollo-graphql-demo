@@ -16,7 +16,7 @@
       <mat-card-content>{{ post.body }}</mat-card-content>
       <mat-divider></mat-divider>
       <mat-card-actions>
-        <a mat-button>Edit</a>
+        <a mat-button (click)="editPost(post)">Edit</a>
         <delete-post [post]="post"></delete-post>
       </mat-card-actions>
     </mat-card>

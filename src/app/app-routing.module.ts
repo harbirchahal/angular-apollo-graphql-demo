@@ -6,6 +6,7 @@ import {
   UsersComponent,
   UserComponent,
   PostsComponent,
+  UpdatePostComponent,
 } from './components';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'users/:id', component: UserComponent },
   { path: 'posts', component: PostsComponent },
+  { path: 'posts/:id/edit', component: UpdatePostComponent },
   { path: '**', redirectTo: 'home' }
 ];
 

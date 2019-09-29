@@ -1,0 +1,12 @@
+<form [formGroup]="postForm" (ngSubmit)="submit()">
+  <p mat-dialog-title>Post</p>
+  <div mat-dialog-content>
+    <input matInput type="text" formControlName="title">
+    <textarea formControlName="body"></textarea>
+  </div>
+  <div mat-dialog-actions>
+    <button type="button" mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-raised-button [disabled]="postForm.invalid">Update</button>
+  </div>
+</form>
+  

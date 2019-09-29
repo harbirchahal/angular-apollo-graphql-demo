@@ -4,6 +4,7 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Post } from '@app/graphql-types';
 import { CommentsComponent } from '../comments/comments.component';
+import { UpdatePostComponent } from './update-post/update-post.component';
 
 const query = gql`
   query AllPosts {
@@ -50,6 +51,14 @@ export class PostsComponent implements OnInit {
     this.dialog.open(CommentsComponent, {
       height: 'auto',
       width: '700px',
+      data: post.id
+    });
+  }
+
+  editPost(post: Post) {
+    this.dialog.open(UpdatePostComponent, {
+      height: 'auto',
+      width: '400px',
       data: post.id
     });
   }

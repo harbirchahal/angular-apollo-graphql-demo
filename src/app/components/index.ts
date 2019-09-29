@@ -2,5 +2,6 @@ export * from './home/home.component';
 export * from './users/users.component';
 export * from './user/user.component';
 export * from './posts/posts.component';
+export * from './posts/update-post/update-post.component';
 export * from './posts/delete-post/delete-post.component';
 export * from './comments/comments.component';
