@@ -58,7 +58,7 @@ export class PostsComponent implements OnInit {
   editPost(post: Post) {
     this.dialog.open(UpdatePostComponent, {
       height: 'auto',
-      width: '400px',
+      width: '600px',
       data: post.id
     });
   }

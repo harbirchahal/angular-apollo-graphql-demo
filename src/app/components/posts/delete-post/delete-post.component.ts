@@ -55,8 +55,8 @@ export class DeletePostComponent implements OnInit {
   confim() {
     this.dialog.open(ConfirmComponent, {
       height: 'auto',
-      width: '300px',
-      data: 'Are you sure to delete this post?'
+      width: '400px',
+      data: this.post.title
     })
       .afterClosed().pipe(
         hasConfirmation,

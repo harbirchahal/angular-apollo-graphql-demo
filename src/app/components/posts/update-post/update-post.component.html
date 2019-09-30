@@ -1,8 +1,13 @@
 <form [formGroup]="postForm" (ngSubmit)="submit()">
   <p mat-dialog-title>Post</p>
   <div mat-dialog-content>
-    <input matInput type="text" formControlName="title">
-    <textarea formControlName="body"></textarea>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Title" formControlName="title">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput rows="5" placeholder="Body" formControlName="body">
+      </textarea>
+    </mat-form-field>
   </div>
   <div mat-dialog-actions>
     <button type="button" mat-button mat-dialog-close>Cancel</button>
